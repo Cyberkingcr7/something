@@ -1,0 +1,47 @@
+{
+  "manifest_version": 3,
+  "name": "Clip Mind — Hotkey Q&A",
+  "version": "1.0.5",
+  "description": "Press a hotkey to send copied text to AI and copy the answer back to clipboard.",
+  "permissions": [
+    "storage",
+    "clipboardWrite",
+    "clipboardRead"
+  ],
+  "host_permissions": ["https://clipkey-server.onrender.com/*"],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "commands": {
+    "answer_clipboard": {
+      "suggested_key": { "default": "Ctrl+Shift+X" },
+      "description": "Send clipboard text to AI"
+    },
+    "show_popup_input": {
+      "suggested_key": { "default": "Ctrl+Shift+H" },
+      "description": "Show popup input for custom text"
+    }
+  },
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["content.js"],
+      "run_at": "document_idle"
+    }
+  ],
+  "action": {
+    "default_title": "Clip Mind — Hotkey Q&A",
+    "default_icon": {
+      "16": "clipkey_ai.png",
+      "32": "clipkey_ai.png",
+      "48": "clipkey_ai.png",
+      "128": "clipkey_ai.png"
+    }
+  },
+  "icons": {
+    "16": "clipkey_ai.png",
+    "32": "clipkey_ai.png",
+    "48": "clipkey_ai.png",
+    "128": "clipkey_ai.png"
+  }
+}
